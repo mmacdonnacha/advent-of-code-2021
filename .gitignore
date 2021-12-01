@@ -1,0 +1,10 @@
+.vscode
+
+# python
+env
+__pycache__
+.pytest_cache
+
+# java
+target
+.class
