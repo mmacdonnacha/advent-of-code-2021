@@ -1,50 +1,28 @@
 package com.github.mmacdonnacha.day01;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
+import com.github.mmacdonnacha.util.Util;
 import java.util.List;
 
 public class Day01 {
 
     public static void main(String[] args) {
+        Util util = new Util();
         Day01 day = new Day01();
         String fileName = "day01.txt";
 
-        int part1 = day.solvePart1(fileName);
+        List<String> input = util.getInputAsList(fileName);
+        List<Integer> data = util.convertToInt(input);
+
+
+        int part1 = day.solvePart1(data);
         System.out.println("Part 1: " + part1);
 
-        int part2 = day.solvePart2(fileName);
+        int part2 = day.solvePart2(data);
         System.out.println("Part 2: " + part2);
     }
 
 
-    public int solvePart1(String fileName){
-        InputStream in = getFileAsIOStream(fileName);
-        BufferedReader r = new BufferedReader(new InputStreamReader(in));
-
-        List<Integer> depths = getInputAsList(r);
-
-        int count = getDepthCount(depths);
-        
-        return count;
-    }
-
-    public int solvePart2(String fileName){
-        InputStream in = getFileAsIOStream(fileName);
-        BufferedReader r = new BufferedReader(new InputStreamReader(in));
-
-        List<Integer> depths = getInputAsList(r);
-
-        int count = getDepthCountPart2(depths);
-        
-        return count;
-    }
-
-
-    public int getDepthCount(List<Integer> depths){
+    public int solvePart1(List<Integer> depths){
         if(depths.isEmpty() || depths.size() == 1)
             return 0;
 
@@ -59,7 +37,7 @@ public class Day01 {
         return count;
     }
 
-    public int getDepthCountPart2(List<Integer> depths){
+    public int solvePart2(List<Integer> depths){
         if(depths.isEmpty() || depths.size() < 4)
             return 0;
 
@@ -75,34 +53,5 @@ public class Day01 {
         }
 
         return count;
-    }
-
-
-    private InputStream getFileAsIOStream(final String fileName) 
-    {
-        InputStream ioStream = this.getClass()
-            .getClassLoader()
-            .getResourceAsStream(fileName);
-    
-        if (ioStream == null) {
-            throw new IllegalArgumentException(fileName + " is not found");
-        }
-        return ioStream;
-    }
-
-
-    private List<Integer> getInputAsList(BufferedReader r){
-        List<Integer> lines = new ArrayList<>();
-
-        try {
-            String line;
-            while ((line=r.readLine()) != null) {
-                lines.add(Integer.parseInt(line));
-            }
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
-
-        return lines;
     }
 }

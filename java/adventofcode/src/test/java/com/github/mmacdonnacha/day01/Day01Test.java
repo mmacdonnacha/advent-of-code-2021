@@ -3,7 +3,6 @@ package com.github.mmacdonnacha.day01;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -19,33 +18,33 @@ public class Day01Test {
         day01 = new Day01();
     }
 
-    @DisplayName("Test empty list has no increase")
+
     @Test
-    public void emptyList(){
+    public void emptyInputPart1(){
         List<Integer> depths = new ArrayList<>();
 
         int expected = 0;
-        int actual = day01.getDepthCount(depths);
+        int actual = day01.solvePart1(depths);
 
         assertEquals(expected, actual);
     }
 
 
     @Test
-    public void oneIncrease(){
+    public void oneIncreasePart1(){
         List<Integer> depths = new ArrayList<>();
         depths.add(199);
         depths.add(200);
 
         int expected = 1;
-        int actual = day01.getDepthCount(depths);
+        int actual = day01.solvePart1(depths);
 
         assertEquals(expected, actual);
     }
 
-    @DisplayName("Using example input")
+
     @Test
-    public void example(){
+    public void exampleInputPart1(){
         List<Integer> depths = new ArrayList<>();
         depths.add(199);
         depths.add(200);
@@ -59,7 +58,7 @@ public class Day01Test {
         depths.add(263);
 
         int expected = 7;
-        int actual = day01.getDepthCount(depths);
+        int actual = day01.solvePart1(depths);
 
         assertEquals(expected, actual);
     }
@@ -67,13 +66,12 @@ public class Day01Test {
 
     /// Part 2
     
-    @DisplayName("Part 2: Test empty list has no increase")
     @Test
-    public void emptyListPart2(){
+    public void emptyInputPart2(){
         List<Integer> depths = new ArrayList<>();
 
         int expected = 0;
-        int actual = day01.getDepthCountPart2(depths);
+        int actual = day01.solvePart2(depths);
 
         assertEquals(expected, actual);
     }
@@ -88,14 +86,14 @@ public class Day01Test {
         depths.add(210);
 
         int expected = 1;
-        int actual = day01.getDepthCountPart2(depths);
+        int actual = day01.solvePart2(depths);
 
         assertEquals(expected, actual);
     }
 
-    @DisplayName("Part 2: Using example input")
+
     @Test
-    public void part2Example(){
+    public void exampleInputPart2(){
         List<Integer> depths = new ArrayList<>();
         depths.add(199);
         depths.add(200);
@@ -109,7 +107,7 @@ public class Day01Test {
         depths.add(263);
 
         int expected = 5;
-        int actual = day01.getDepthCountPart2(depths);
+        int actual = day01.solvePart2(depths);
 
         assertEquals(expected, actual);
     }
