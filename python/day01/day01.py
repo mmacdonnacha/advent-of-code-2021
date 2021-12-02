@@ -1,7 +1,15 @@
 from pathlib import Path
 
 
-def get_depth_count_part1(depths: list) -> int:
+def get_file_contents() -> list:
+    path = Path(__file__).parent / "../resources/day01.txt"
+    with path.open() as f:
+        lines = f.readlines()
+
+    return lines
+
+
+def solve_part1(depths: list) -> int:
     if len(depths) <= 1:
         return 0
 
@@ -14,8 +22,8 @@ def get_depth_count_part1(depths: list) -> int:
     return count
 
 
-def get_depth_count_part2(depths: list) -> int:
-    if len(depths) <= 4:
+def solve_part2(depths: list) -> int:
+    if len(depths) < 4:
         return 0
 
     count = 0
@@ -30,20 +38,12 @@ def get_depth_count_part2(depths: list) -> int:
     return count
 
 
-def get_file_contents() -> list:
-    path = Path(__file__).parent / "../resources/day01.txt"
-    with path.open() as f:
-        lines = f.readlines()
-
-    return lines
-
-
 if __name__ == '__main__':
     lines = get_file_contents()
     depths = [int(x) for x in lines]
 
-    part1 = get_depth_count_part1(depths)
+    part1 = solve_part1(depths)
     print(f'Part 1: {part1}')
 
-    part2 = get_depth_count_part2(depths)
+    part2 = solve_part2(depths)
     print(f'Part 2: {part2}')
